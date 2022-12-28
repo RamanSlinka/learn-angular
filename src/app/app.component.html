@@ -1,4 +1,29 @@
-<app-test1></app-test1>
-<app-test2></app-test2>
-<app-test3></app-test3>
-<app-test4></app-test4>
+
+<div>
+<!-- interpolation -->
+  <h1>
+    {{title}}
+  </h1>
+  <h3>{{user.name}} has {{user.age}} age</h3>
+  <hr/>
+<!-- Property binding -->
+  <button [disabled] = 'isAppLoading'>Click</button>
+  <hr/>
+
+</div>
+<div>
+  <hr/>
+<!--  event binding-->
+  <button (click)="changeTitleHandler()" >Change title</button>
+  <br>
+  <p>{{text}}</p>
+  <input type="text" (input)="changeTextHandler($event)" />
+  <input type="text" (keyup.enter)="changeTextHandler($event)"  placeholder="at the end - press ENTER"/>
+  <hr>
+<!--two-way binding-->
+<!--  first method :      -->
+  <h5>{{text2}}</h5>
+  <input type="text"  (input)="changeText2Handler($event)" [value]="text2" >
+<!-- RIGHT !!! second method-->
+  <input type="text" [(ngModel)]="text2">
+</div>
