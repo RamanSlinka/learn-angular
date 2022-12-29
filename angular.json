@@ -13,7 +13,7 @@
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "prefix": "ng",
+      "prefix": "ang",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
