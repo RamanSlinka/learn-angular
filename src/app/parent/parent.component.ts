@@ -11,8 +11,14 @@ export class ParentComponent {
   math?: number
   english?: number
 
+  grades: string[] = ['math: 5, physic: 6']
+
   getGrade(value: Grade) {
     this.math = value.math
     this.english = value.english
+  }
+
+  getGradeFomInput(grade: string) {
+    this.grades.push(grade)
   }
 }

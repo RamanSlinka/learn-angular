@@ -3,7 +3,13 @@
   <h2>Child gets next grade:</h2>
   <h3>math: {{math}}</h3>
   <h3>english: {{english}}</h3>
-  <ang-child  (sendGradeEvent)="getGrade($event)" ></ang-child>
+
+  <div>
+    <p>from Input: {{grades | json}}</p>
+  </div>
+  <ang-child  (sendGradeEvent)="getGrade($event)"
+  (sendInputGradeEvent)="getGradeFomInput($event)"
+  ></ang-child>
 
 
 </div>

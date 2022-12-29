@@ -1,4 +1,9 @@
 <div>
   <h2>child </h2>
   <button (click) = 'sendGradeHandler()'>send grade</button>
+
+  <div>
+    <input type="text" [(ngModel)]="inputGrade" >
+    <button (click)="sendEnteredGrades()">sendEnteredGrades</button>
+  </div>
 </div>
