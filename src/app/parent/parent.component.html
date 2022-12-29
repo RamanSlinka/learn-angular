@@ -1,9 +1,10 @@
 <div>
   <h1>parent</h1>
-  <p>{{name}} {{surname}}</p>
-  <p>{{address.city}} {{address.street}} {{address.house}}</p>
-  <ang-child [surnameProps]="surname"
-  [address]="address"
-  ></ang-child>
+  <h2>Child gets next grade:</h2>
+  <h3>math: {{math}}</h3>
+  <h3>english: {{english}}</h3>
+  <ang-child  (sendGradeEvent)="getGrade($event)" ></ang-child>
+
+
 </div>
 
