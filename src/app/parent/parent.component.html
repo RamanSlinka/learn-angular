@@ -5,10 +5,18 @@
   <h3>english: {{english}}</h3>
 
   <div>
-    <p>from Input: {{grades | json}}</p>
+    <p *ngFor="let grade of grades; index as i; count as count">from Input:
+
+      <br><span> index: {{i}} </span>
+      <br>
+      <span>element:  {{grade}}</span>
+      <br>
+      <span>total count: {{count}} </span>
+    </p>
   </div>
-  <ang-child  (sendGradeEvent)="getGrade($event)"
-  (sendInputGradeEvent)="getGradeFomInput($event)"
+  <ang-child
+    (sendGradeEvent)="getGrade($event)"
+    (sendInputGradeEvent)="getGradeFomInput($event)"
   ></ang-child>
 
 
