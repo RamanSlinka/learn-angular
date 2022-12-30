@@ -14,6 +14,15 @@
       <span>total count: {{count}} </span>
     </p>
   </div>
+
+  <div *ngFor="let lesson of lessons">
+    <div>
+      <h2>{{lesson.title}}</h2>
+    </div>
+    <h3>WeekGrades:
+    <p *ngFor="let grade of lesson.weekGrades">{{grade.day}} - {{grade.gridItem}}</p>
+    </h3>
+  </div>
   <ang-child
     (sendGradeEvent)="getGrade($event)"
     (sendInputGradeEvent)="getGradeFomInput($event)"
