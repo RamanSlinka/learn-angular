@@ -1,10 +1,14 @@
 .default{
   font-style: italic;
+  font-size: 20px;
 }
 .success{
   color: green;
-  font-size: 15px;
 }
 .error{
   color: red
+}
+.bigPrice{
+  font-weight: bold;
+  font-size: 30px;
 }
