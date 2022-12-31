@@ -7,3 +7,11 @@
 
   <div *ngSwitchDefault>Unknown number</div>
 </div>
+
+<!--default styles-->
+<h2 class="default success ">Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
+
+<!--    used ngClass   -->
+<h2 [ngClass]="'default success'">Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
+<h2 [ngClass]="{default: true, success: isSuccess}">Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
+<h2 [ngClass]="{'default success': isSuccess, 'error': error}">Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>

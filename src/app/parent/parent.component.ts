@@ -7,5 +7,13 @@ import {Component} from '@angular/core';
 })
 export class ParentComponent {
   value = ''
+  isSuccess = false
+  error = false
 
+  constructor() {
+    setTimeout(() => {
+      this.isSuccess = true
+      this.error = true
+    }, 3000)
+  }
 }
