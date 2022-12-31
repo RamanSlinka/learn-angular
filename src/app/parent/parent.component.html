@@ -15,3 +15,7 @@
 <h2 [ngClass]="'default success'">Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
 <h2 [ngClass]="{default: true, success: isSuccess}">Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
 <h2 [ngClass]="{'default success': isSuccess, 'error': error}">Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
+
+<!--   for use inline styles-->
+<h2 [ngStyle]="{'color': 'blue'}">Lorem ipsum dolor sit.</h2>
+<h2 [ngStyle]="styles">Lorem ipsum dolor sit.</h2>
