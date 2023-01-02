@@ -1,9 +1,6 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
+import {ValueService} from "../value.service";
 
-export interface Grade {
-  math: number
-  english: number
-}
 
 @Component({
   selector: 'ang-child',
@@ -11,20 +8,19 @@ export interface Grade {
   styleUrls: ['./child.component.scss']
 })
 export class ChildComponent {
+  value = 0
 
-  @Output() sendGradeEvent = new EventEmitter<Grade>()
-  inputGrade = ''
-  @Output() sendInputGradeEvent = new EventEmitter<string>()
+  constructor(private valueService: ValueService) {}
 
-  sendGradeHandler() {
-    const math = 5;
-    const english = 10
-    this.sendGradeEvent.emit({math, english})
-
+  ngOnInit(): void {
+    // this.value = this.valueService.value
+  this.valueService.value$.subscribe((value) => {
+    this.value = value
+  })
 
   }
 
-  sendEnteredGrades() {
-    this.sendInputGradeEvent.emit(this.inputGrade)
+  decValueHandler() {
+    this.valueService.decValue()
   }
 }

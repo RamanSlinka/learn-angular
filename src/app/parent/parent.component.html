@@ -1,17 +1,6 @@
-<!--default-->
-<div>{{title}}</div>
-<!--  pipes  -->
-<div>{{title | lowercase}}</div>
-<div>{{title | uppercase}}</div>
-<div>{{title | titlecase}}</div>
-<br>
-<div>{{url | slice: 8}}</div>
-<div>{{title | slice: -9}}</div>
-<div>{{url| slice: 8: 15}}</div>
-<br>
-<div>{{date | date: 'short'}}</div>
-<div>{{date | date: 'long'}}</div>
-<div>{{date | date: 'full'}}</div>
-<br>
-<div>{{cash | currency }}</div>
-<div>{{cash | percent }}</div>
+<!--<div>{{test}}</div>-->
+<h2>Parent</h2>
+<h3>{{value}}</h3>
+<button (click)="addValueHandler()"> + </button>
+<hr>
+<ang-child></ang-child>

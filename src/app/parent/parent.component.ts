@@ -1,15 +1,28 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ValueService} from "./value.service";
 
 
 @Component({
   selector: 'ang-parent',
   templateUrl: './parent.component.html',
-  styleUrls: ['./parent.component.scss']
+  styleUrls: ['./parent.component.scss'],
+  // providers:[ValueService]
 })
-export class ParentComponent {
+export class ParentComponent implements OnInit{
 
-  title = 'Lorem ipsum dolor sit amet'
-  url = 'https://angular.io/api/comon'
-  date = new Date(2023, 1, 2, 10)
-  cash = 25
+  value = 0
+
+  constructor(private valueService: ValueService) {}
+
+  ngOnInit(): void {
+    // this.value = this.valueService.value
+  this.valueService.value$.subscribe((value) => {
+    this.value = value
+  })
+
+  }
+
+  addValueHandler() {
+     this.valueService.addValue()
+  }
 }
