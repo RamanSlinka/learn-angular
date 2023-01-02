@@ -1,9 +1,17 @@
-<div *ngFor="let fruit of fruits, even as even, odd as odd">
-
-  <div
-    *ngIf="fruit.price > 7"
-    class="default"
-    [ngClass]="{success: even, error: odd, bigPrice: fruit.price > 20}"
-  >{{fruit.name}} - {{fruit.price}} zl
-  </div>
-</div>
+<!--default-->
+<div>{{title}}</div>
+<!--  pipes  -->
+<div>{{title | lowercase}}</div>
+<div>{{title | uppercase}}</div>
+<div>{{title | titlecase}}</div>
+<br>
+<div>{{url | slice: 8}}</div>
+<div>{{title | slice: -9}}</div>
+<div>{{url| slice: 8: 15}}</div>
+<br>
+<div>{{date | date: 'short'}}</div>
+<div>{{date | date: 'long'}}</div>
+<div>{{date | date: 'full'}}</div>
+<br>
+<div>{{cash | currency }}</div>
+<div>{{cash | percent }}</div>
