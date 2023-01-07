@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {ValueService} from "../services/value.service";
+import {ValueService} from "../../services/value.service";
 import {Observable} from "rxjs";
-import {BeautyLoggerService} from "../services/beauty-logger.service";
+import {BeautyLoggerService} from "../../services/beauty-logger.service";
 
 
 @Component({
