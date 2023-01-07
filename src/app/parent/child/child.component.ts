@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {ValueService} from "../value.service";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -8,17 +9,16 @@ import {ValueService} from "../value.service";
   styleUrls: ['./child.component.scss']
 })
 export class ChildComponent {
-  value = 0
+  value$ = new Observable()
 
   constructor(private valueService: ValueService) {}
 
   ngOnInit(): void {
     // this.value = this.valueService.value
-  this.valueService.value$.subscribe((value) => {
-    this.value = value
-  })
-
-  }
+  // this.valueService.value$.subscribe((value) => {
+  //   this.value = value
+  this.value$ = this.valueService.value$
+    }
 
   decValueHandler() {
     this.valueService.decValue()

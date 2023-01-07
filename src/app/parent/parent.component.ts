@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ValueService} from "./value.service";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -8,21 +9,22 @@ import {ValueService} from "./value.service";
   styleUrls: ['./parent.component.scss'],
   // providers:[ValueService]
 })
-export class ParentComponent implements OnInit{
+export class ParentComponent implements OnInit {
 
-  value = 0
+  value$ = new Observable()
 
-  constructor(private valueService: ValueService) {}
+  constructor(private valueService: ValueService) {
+  }
 
   ngOnInit(): void {
     // this.value = this.valueService.value
-  this.valueService.value$.subscribe((value) => {
-    this.value = value
-  })
-
+    // this.valueService.value$.subscribe((value) => {
+    //   this.value = value
+    // })
+    this.value$ = this.valueService.value$
   }
 
   addValueHandler() {
-     this.valueService.addValue()
+    this.valueService.addValue()
   }
 }
