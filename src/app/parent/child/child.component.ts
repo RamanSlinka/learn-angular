@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {ValueService} from "../value.service";
+import {ValueService} from "../services/value.service";
 import {Observable} from "rxjs";
+import {BeautyLoggerService} from "../services/beauty-logger.service";
 
 
 @Component({
@@ -11,7 +12,7 @@ import {Observable} from "rxjs";
 export class ChildComponent {
   value$ = new Observable()
 
-  constructor(private valueService: ValueService) {}
+  constructor(private valueService: ValueService,  private beautyLoggerService: BeautyLoggerService) {}
 
   ngOnInit(): void {
     // this.value = this.valueService.value
@@ -22,5 +23,6 @@ export class ChildComponent {
 
   decValueHandler() {
     this.valueService.decValue()
+    this.beautyLoggerService.log('dec value', 'info')
   }
 }

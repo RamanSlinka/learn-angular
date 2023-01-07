@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ValueService} from "./value.service";
+import {ValueService} from "./services/value.service";
 import {Observable} from "rxjs";
+import {BeautyLoggerService} from "./services/beauty-logger.service";
 
 
 @Component({
@@ -13,7 +14,7 @@ export class ParentComponent implements OnInit {
 
   value$ = new Observable()
 
-  constructor(private valueService: ValueService) {
+  constructor(private valueService: ValueService, private beautyLoggerService: BeautyLoggerService) {
   }
 
   ngOnInit(): void {
@@ -26,5 +27,6 @@ export class ParentComponent implements OnInit {
 
   addValueHandler() {
     this.valueService.addValue()
+    this.beautyLoggerService.log('add value', 'success')
   }
 }
