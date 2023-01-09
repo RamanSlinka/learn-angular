@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Todo, TodosService} from "../../services/todos.service";
-
-
+import {HttpErrorResponse} from "@angular/common/http";
 
 
 @Component({
@@ -12,16 +11,23 @@ import {Todo, TodosService} from "../../services/todos.service";
 export class TodosComponent implements OnInit {
 
   todos: Todo[] = []
+  error = ''
 
-  constructor(private todosService: TodosService) { }
+  constructor(private todosService: TodosService) {
+  }
 
   ngOnInit() {
     this.getTodos()
   }
 
   getTodos() {
-    this.todosService.getTodos().subscribe((res: Todo[]) => {
-      this.todos = res
+    this.todosService.getTodos().subscribe({
+      next: (res: Todo[]) => {
+        this.todos = res
+      },
+      error: (error: HttpErrorResponse) => {
+        this.error = error.message
+      }
     })
   }
 
@@ -39,8 +45,8 @@ export class TodosComponent implements OnInit {
   deleteTodo() {
     const todoId = '85ebf366-583c-4a92-b686-3bc430dbdb92'
     this.todosService.deleteTodo(todoId).subscribe(() => {
-        this.todos = this.todos.filter(td => td.id !==todoId)
-      })
+      this.todos = this.todos.filter(td => td.id !== todoId)
+    })
   }
 }
 

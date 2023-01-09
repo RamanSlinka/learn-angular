@@ -1,5 +1,9 @@
+<h2 *ngIf="!!error; else content">{{error}}</h2>
+
+<ng-template #content>
 <div *ngFor="let todo of todos, index as index">
   <p class="container"> {{index}}-- {{todo.title}} -- {{todo.addedDate | date}}</p>
   </div>
 <button (click)="createTodo()"> + </button>
 <button (click)="deleteTodo()"> - </button>
+</ng-template>

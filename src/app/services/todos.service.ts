@@ -28,7 +28,7 @@ export class TodosService {
   }
 
   getTodos(): Observable<Todo []> {
-   return this.http.get<Todo[]>('https://social-network.samuraijs.com/api/1.1/todo-lists', this.httpOptions)
+   return this.http.get<Todo[]>('https://social-network.samuraijs.com/api/1.1/todo-lists1', this.httpOptions)
   }
 
 
