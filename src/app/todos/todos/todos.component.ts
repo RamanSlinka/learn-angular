@@ -1,7 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Todo, TodosService} from "../../services/todos.service";
-import {HttpErrorResponse} from "@angular/common/http";
-import {Subscription} from "rxjs";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -9,58 +8,35 @@ import {Subscription} from "rxjs";
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss']
 })
-export class TodosComponent implements OnInit, OnDestroy {
+export class TodosComponent implements OnInit {
 
-  todos: Todo[] = []
+  todos$!: Observable<Todo[]>
   error = ''
-  subscription: Subscription = new Subscription()
 
   constructor(private todosService: TodosService) {
   }
 
   ngOnInit() {
+    this.todos$ = this.todosService.todos$
+
     this.getTodos()
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe()
-  }
 
   getTodos() {
-    this.subscription.add(
-      this.todosService.getTodos().subscribe({
-        next: (res: Todo[]) => {
-          this.todos = res
-        },
-        error: (error: HttpErrorResponse) => {
-          this.error = error.message
-        }
-      })
-    )
+    this.todosService.getTodos()
 
   }
 
   createTodo() {
     const randomNumber = Math.floor(Math.random() * 100)
     const title = 'Angular ' + randomNumber
-
-    this.subscription.add(
-      this.todosService.createTodo(title)
-        .subscribe((res) => {
-          const newTodo = res.data.item
-          this.todos.unshift(newTodo)
-        })
-    )
-
+    this.todosService.createTodo(title)
   }
 
   deleteTodo() {
-    const todoId = '85ebf366-583c-4a92-b686-3bc430dbdb92'
-    this.subscription.add(
-      this.todosService.deleteTodo(todoId).subscribe(() => {
-        this.todos = this.todos.filter(td => td.id !== todoId)
-      })
-    )
+    const todoId = '1688c48d-554f-49c7-91ad-2f7c276c16e1'
+    this.todosService.deleteTodo(todoId)
   }
 }
 
