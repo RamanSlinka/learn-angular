@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, map, Observable} from "rxjs";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {BehaviorSubject, catchError, EMPTY, map, Observable, throwError} from "rxjs";
+import {BeautyLoggerService} from "./beauty-logger.service";
 
 export interface Todo {
   addedDate: string
@@ -24,7 +25,7 @@ export class TodosService {
   todos$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([])
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private beautyLoggerService: BeautyLoggerService) {
   }
 
   httpOptions = {
@@ -34,9 +35,17 @@ export class TodosService {
   }
 
   getTodos() {
-    return this.http.get<Todo[]>('https://social-network.samuraijs.com/api/1.1/todo-lists', this.httpOptions).subscribe((todos) => {
-      this.todos$.next(todos)
-    })
+    return this.http
+      .get<Todo[]>('https://social-network.samuraijs.com/api/1.1/todo-lists1', this.httpOptions)
+      .pipe(catchError((err: HttpErrorResponse) => {
+          this.beautyLoggerService.log(err.message, "error")
+          return EMPTY
+          // return  throwError(err)
+        })
+      )
+      .subscribe((todos) => {
+        this.todos$.next(todos)
+      })
   }
 
 
