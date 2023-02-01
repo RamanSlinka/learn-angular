@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ParentComponent} from "./parent/parent.component";
 import { ChildComponent } from './parent/child/child.component';
 import { TodosComponent } from './todos/todos/todos.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpClientModule} from "@angular/common/http";
+import { FormTemplateComponent } from './forms/form-template/form-template.component';
+import { FormReactiveComponent } from './forms/form-reactive/form-reactive.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +17,14 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     ParentComponent,
     ChildComponent,
     TodosComponent,
+    FormTemplateComponent,
+    FormReactiveComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

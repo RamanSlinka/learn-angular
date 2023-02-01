@@ -1,0 +1,24 @@
+<h2>Reactive form</h2>
+<div>
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+
+    <div>Name:
+      <input formControlName="name"/>
+      <small *ngIf="form.get('name')?.invalid  && form.get('name')?.touched" style="color:red">Error</small>
+    </div>
+
+    <div> Age:
+      <input  formControlName="age">
+      <small *ngIf="form.get('age')?.invalid  && form.get('age')?.touched" style="color:red">Error</small>
+    </div>
+
+    <div>Profession:
+      <input formControlName="profession"/>
+    </div>
+
+    <div>
+      <button  [disabled] = 'form.invalid'  type="submit"   >Send</button>
+    </div>
+  </form>
+</div>
+
