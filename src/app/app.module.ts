@@ -11,7 +11,7 @@ import { HttpClientModule} from "@angular/common/http";
 import { FormTemplateComponent } from './forms/form-template/form-template.component';
 import { FormReactiveComponent } from './forms/form-reactive/form-reactive.component';
 import { CounterComponent } from './counter/counter.component';
-import {CounterService} from "./services/counter.service";
+import { CounterChildComponent } from './counter/counter-child/counter-child.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import {CounterService} from "./services/counter.service";
     FormTemplateComponent,
     FormReactiveComponent,
     CounterComponent,
+    CounterChildComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,7 @@ import {CounterService} from "./services/counter.service";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [CounterService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

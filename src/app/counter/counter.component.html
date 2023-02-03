@@ -2,8 +2,16 @@
   <h1>Angular services</h1>
 
   <div class="card">
-    <h2>Counter: {{counterService.counter}}</h2>
+    <h2> Global Counter: {{counterService.counter}}</h2>
     <button (click)="counterService.increase()" class="btn">+</button>
     <button (click)="counterService.decrease()" class="btn">-</button>
   </div>
+  <div class="card">
+    <h2>Local Counter: {{counterLocalService.counter}}</h2>
+    <button (click)="counterLocalService.increase()" class="btn">+</button>
+    <button (click)="counterLocalService.decrease()" class="btn">-</button>
+  </div>
+  <hr>
+  <hr>
+  <ang-counter-child></ang-counter-child>
 </div>

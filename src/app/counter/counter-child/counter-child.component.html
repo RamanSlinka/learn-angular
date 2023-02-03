@@ -1,0 +1,11 @@
+<h2>Child component counter</h2>
+<div class="card">
+  <h2>Global Counter: {{counterService.counter}}</h2>
+  <button (click)="counterService.increase()" class="btn">+</button>
+  <button (click)="counterService.decrease()" class="btn">-</button>
+</div>
+<div class="card">
+  <h2>Local Counter: {{counterLocalService.counter}}</h2>
+  <button (click)="counterLocalService.increase()" class="btn">+</button>
+  <button (click)="counterLocalService.decrease()" class="btn">-</button>
+</div>
