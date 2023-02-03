@@ -11,6 +11,7 @@ import { HttpClientModule} from "@angular/common/http";
 import { FormTemplateComponent } from './forms/form-template/form-template.component';
 import { FormReactiveComponent } from './forms/form-reactive/form-reactive.component';
 import { CounterComponent } from './counter/counter.component';
+import {CounterService} from "./services/counter.service";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { CounterComponent } from './counter/counter.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CounterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
