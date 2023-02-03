@@ -1,0 +1,23 @@
+<h2>Template form</h2>
+<div>
+  <form #templateForm='ngForm' (ngSubmit)="submitForm(templateForm)">
+
+    <div>Name:
+      <input name="name"  ngModel />
+    </div>
+
+    <div> Age:
+      <input  name="age" required  ngModel >
+      <small *ngIf="templateForm.invalid && templateForm.touched" style="color:red">Required</small>
+    </div>
+
+    <div>Profession:
+      <input  name="profession"  ngModel/>
+    </div>
+
+    <div>
+      <button [disabled]="templateForm.invalid"  type="submit"   >Send</button>
+<!--      <button  (click)="templateForm.reset()" type="button"   >Reset form</button>-->
+    </div>
+  </form>
+</div>
