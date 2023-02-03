@@ -10,6 +10,7 @@ import { TodosComponent } from './todos/todos/todos.component';
 import { HttpClientModule} from "@angular/common/http";
 import { FormTemplateComponent } from './forms/form-template/form-template.component';
 import { FormReactiveComponent } from './forms/form-reactive/form-reactive.component';
+import { CounterComponent } from './counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormReactiveComponent } from './forms/form-reactive/form-reactive.compo
     TodosComponent,
     FormTemplateComponent,
     FormReactiveComponent,
+    CounterComponent,
   ],
   imports: [
     BrowserModule,
