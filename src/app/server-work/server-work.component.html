@@ -10,21 +10,26 @@
   </div>
 
   <hr>
-  <div *ngIf="!loading; else loader">
-    <div *ngIf="todos.length ; else noTodos">
-      <div *ngFor="let todo of todos"  class="card">
-        <p>
-          <span [class.completed]="todo.completed"> {{todo.title | titlecase}}</span>
-          <span>
-        <button (click)="removeTodo(todo.id)" class="btn btn-danger">Delete</button>
-        <button [disabled]="todo.completed" class="btn">Done</button>
-      </span>
-        </p>
-      </div>
-    </div>
-    <ng-template #noTodos><p> No more todos :(</p></ng-template>
-  </div>
-  <ng-template #loader> Loading...</ng-template>
+  <p *ngIf="error ; else noErrorBlock" class="error">{{error}}</p>
 
+
+  <ng-template #noErrorBlock>
+
+    <div *ngIf="!loading; else loader">
+      <div *ngIf="todos.length ; else noTodos">
+        <div *ngFor="let todo of todos" class="card">
+          <p>
+            <span [class.completed]="todo.completed"> {{todo.title | titlecase}}</span>
+            <span>
+        <button (click)="removeTodo(todo.id)" class="btn btn-danger">Delete</button>
+        <button (click)="doneTodo(todo.id)" [disabled]="todo.completed" class="btn">Done</button>
+      </span>
+          </p>
+        </div>
+      </div>
+      <ng-template #noTodos><p> No more todos :(</p></ng-template>
+    </div>
+    <ng-template #loader> Loading...</ng-template>
+  </ng-template>
 </div>
 

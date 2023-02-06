@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {delay} from "rxjs";
 import {NewTodosService, Todo} from "../services/new-todos.service";
 
 
@@ -13,6 +11,7 @@ export class ServerWorkComponent implements OnInit {
   todos: Todo[] = []
   todoTitle = ''
   loading = false
+  error = ''
 
   constructor(private todoService: NewTodosService) {
   }
@@ -42,13 +41,28 @@ export class ServerWorkComponent implements OnInit {
       .subscribe(todos => {
         this.todos = todos
         this.loading = false
+      },error => {
+        this.error = error.message
       })
   }
 
-  removeTodo(id: any) {
+  removeTodo(id:  number | undefined) {
     this.todoService.removeTodo(id)
       .subscribe(() => {
         this.todos = this.todos.filter(todo => todo.id !== id)
       })
+  }
+
+  doneTodo(id: number | undefined) {
+    this.todoService.completeTodo(id).subscribe(todo => {
+
+      // if (this.todos.find((t: Todo) => t.id === todo.id)) {
+      //   console.log(this.todos.find((t: Todo) => t.id === todo.id).completed = true)
+      // }
+
+      // this.todos.find((t: Todo) => t.id === todo.id).completed = true
+
+    })
+
   }
 }
