@@ -3,9 +3,9 @@
 
   <div class="card">
     <div class="form-control">
-      <input type="text" placeholder="Title">
+      <input [(ngModel)]="todoTitle" type="text" placeholder="Title">
     </div>
-    <button class="btn">Add</button>
+    <button (click)="createTodo()" class="btn">Add</button>
     <button class="btn">Download</button>
   </div>
 

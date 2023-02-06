@@ -14,6 +14,7 @@ export interface Todo {
 })
 export class ServerWorkComponent implements OnInit {
   todos: Todo[] = []
+  todoTitle = ''
 
   constructor(private http: HttpClient) {
   }
@@ -26,4 +27,19 @@ export class ServerWorkComponent implements OnInit {
       })
   }
 
+  createTodo() {
+    if (!this.todoTitle.trim()) {
+      return
+    }
+    const newTodo: Todo = {
+      title: this.todoTitle,
+      completed: false
+    }
+    this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', newTodo)
+      .subscribe(todo => {
+        console.log(todo)
+        this.todos.push(todo)
+        this.todoTitle = ''
+      })
+  }
 }
