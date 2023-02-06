@@ -1,12 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {delay} from "rxjs";
+import {NewTodosService, Todo} from "../services/new-todos.service";
 
-export interface Todo {
-  completed: boolean
-  id?: number
-  title: string
-}
 
 @Component({
   selector: 'ang-server-work',
@@ -18,11 +14,11 @@ export class ServerWorkComponent implements OnInit {
   todoTitle = ''
   loading = false
 
-  constructor(private http: HttpClient) {
+  constructor(private todoService: NewTodosService) {
   }
 
   ngOnInit() {
- this.fetchTodos()
+    this.fetchTodos()
   }
 
   createTodo() {
@@ -33,9 +29,8 @@ export class ServerWorkComponent implements OnInit {
       title: this.todoTitle,
       completed: false
     }
-    this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', newTodo)
+    this.todoService.addTodo(newTodo)
       .subscribe(todo => {
-        console.log(todo)
         this.todos.push(todo)
         this.todoTitle = ''
       })
@@ -43,8 +38,7 @@ export class ServerWorkComponent implements OnInit {
 
   fetchTodos() {
     this.loading = true
-    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
-      .pipe(delay(1500))
+    this.todoService.fetchTodos()
       .subscribe(todos => {
         this.todos = todos
         this.loading = false
@@ -52,7 +46,7 @@ export class ServerWorkComponent implements OnInit {
   }
 
   removeTodo(id: any) {
-    this.http.delete<void>(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    this.todoService.removeTodo(id)
       .subscribe(() => {
         this.todos = this.todos.filter(todo => todo.id !== id)
       })
