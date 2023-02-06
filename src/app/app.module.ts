@@ -12,6 +12,7 @@ import { FormTemplateComponent } from './forms/form-template/form-template.compo
 import { FormReactiveComponent } from './forms/form-reactive/form-reactive.component';
 import { CounterComponent } from './counter/counter.component';
 import { CounterChildComponent } from './counter/counter-child/counter-child.component';
+import { ServerWorkComponent } from './server-work/server-work.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CounterChildComponent } from './counter/counter-child/counter-child.com
     FormReactiveComponent,
     CounterComponent,
     CounterChildComponent,
+    ServerWorkComponent,
   ],
   imports: [
     BrowserModule,

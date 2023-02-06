@@ -53,10 +53,15 @@ img {
     color: #000;
     cursor: not-allowed;
   }
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
-.btn:hover {
-  opacity: 0.8;
+.btn.btn-danger {
+  background: #dc3545;
+  color: #fff;
 }
 
 .form-control {
@@ -84,6 +89,15 @@ img {
   padding: 1rem;
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
+
+  p {
+    display: flex;
+    justify-content: space-between;
+
+    span.completed {
+      text-decoration: line-through;
+    }
+  }
 }
 
 input,
