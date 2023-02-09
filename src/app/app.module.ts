@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule, Provider} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,12 +7,20 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ParentComponent} from "./parent/parent.component";
 import { ChildComponent } from './parent/child/child.component';
 import { TodosComponent } from './todos/todos/todos.component';
-import { HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { FormTemplateComponent } from './forms/form-template/form-template.component';
 import { FormReactiveComponent } from './forms/form-reactive/form-reactive.component';
 import { CounterComponent } from './counter/counter.component';
 import { CounterChildComponent } from './counter/counter-child/counter-child.component';
 import { ServerWorkComponent } from './server-work/server-work.component';
+import {AuthInterceptor} from "./services/auth.interceptor";
+
+
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthInterceptor,
+  multi: true
+}
 
 @NgModule({
   declarations: [
@@ -33,7 +41,7 @@ import { ServerWorkComponent } from './server-work/server-work.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
