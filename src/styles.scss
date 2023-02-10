@@ -114,3 +114,33 @@ textarea {
 hr {
   margin: .5rem 0;
 }
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  z-index: 1;
+  width: 100%;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+  background: #dc3545;
+  color: #fff;
+
+  ul {
+    display: flex;
+
+    li.active a {
+      font-weight: bold;
+      color: #333333;
+      cursor: default;
+    }
+  }
+
+  a {
+    color: #fff;
+    padding: 0.45rem;
+    margin: 0 0.25rem;
+  }
+}

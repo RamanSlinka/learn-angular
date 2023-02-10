@@ -14,6 +14,12 @@ import { CounterComponent } from './counter/counter.component';
 import { CounterChildComponent } from './counter/counter-child/counter-child.component';
 import { ServerWorkComponent } from './server-work/server-work.component';
 import {AuthInterceptor} from "./services/auth.interceptor";
+import { AboutComponent } from './routing/about/about.component';
+import { AboutExtraComponent } from './routing/about-extra/about-extra.component';
+import { RoutingComponent } from './routing/routing.component';
+import { HomeComponent } from './routing/home/home.component';
+import { PostComponent } from './routing/post/post.component';
+import { PostsComponent } from './routing/posts/posts.component';
 
 
 const INTERCEPTOR_PROVIDER: Provider = {
@@ -33,6 +39,12 @@ const INTERCEPTOR_PROVIDER: Provider = {
     CounterComponent,
     CounterChildComponent,
     ServerWorkComponent,
+    AboutComponent,
+    AboutExtraComponent,
+    RoutingComponent,
+    HomeComponent,
+    PostComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
